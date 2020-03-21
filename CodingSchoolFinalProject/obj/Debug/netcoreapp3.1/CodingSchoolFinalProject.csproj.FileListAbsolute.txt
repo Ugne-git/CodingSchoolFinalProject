@@ -90,3 +90,9 @@ C:\Users\UUURRRR\Documents\GitHub\CodingSchoolFinalProject\CodingSchoolFinalProj
 C:\Users\UUURRRR\Documents\GitHub\CodingSchoolFinalProject\CodingSchoolFinalProject\obj\Debug\netcoreapp3.1\CodingSchoolFinalProject.AssemblyInfo.cs
 C:\Users\UUURRRR\Documents\GitHub\CodingSchoolFinalProject\CodingSchoolFinalProject\obj\Debug\netcoreapp3.1\CodingSchoolFinalProject.csproj.CopyComplete
 C:\Users\UUURRRR\Documents\GitHub\CodingSchoolFinalProject\CodingSchoolFinalProject\obj\Debug\netcoreapp3.1\CodingSchoolFinalProject.genruntimeconfig.cache
+C:\Users\UUURRRR\Documents\GitHub\CodingSchoolFinalProject\CodingSchoolFinalProject\bin\Debug\netcoreapp3.1\CodingSchoolFinalProject.pdb
+C:\Users\UUURRRR\Documents\GitHub\CodingSchoolFinalProject\CodingSchoolFinalProject\bin\Debug\netcoreapp3.1\WebDriver.dll
+C:\Users\UUURRRR\Documents\GitHub\CodingSchoolFinalProject\CodingSchoolFinalProject\obj\Debug\netcoreapp3.1\CodingSchoolFinalProject.dll
+C:\Users\UUURRRR\Documents\GitHub\CodingSchoolFinalProject\CodingSchoolFinalProject\obj\Debug\netcoreapp3.1\CodingSchoolFinalProject.pdb
+C:\Users\UUURRRR\Documents\GitHub\CodingSchoolFinalProject\CodingSchoolFinalProject\bin\Debug\netcoreapp3.1\WebDriver.Support.dll
+C:\Users\UUURRRR\Documents\GitHub\CodingSchoolFinalProject\CodingSchoolFinalProject\obj\Debug\netcoreapp3.1\CodingSchoolFinalProject.csproj.CoreCompileInputs.cache

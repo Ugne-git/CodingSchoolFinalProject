@@ -8,8 +8,14 @@ namespace CodingSchoolFinalProject.Pages
     public class LoginPage :PARENTPAGE
     {
         private IWebElement SigninButtonElement =>
-            Driver.FindElement(By.CssSelector("#header > div.nav > div > div > nav > div.header_user_info > a"));
+            Driver.FindElement(By.CssSelector("#header > div.nav > div > div > nav > div.header_user_info > a")); //surasti ir pakeisti į geresnį selectorių
 
         public LoginPage(IWebDriver driver) : base(driver) { }
+
+        public LoginPage ClickSignInButton()
+        {
+            SigninButtonElement.Click();
+            return this;
+        }
     }
 }
