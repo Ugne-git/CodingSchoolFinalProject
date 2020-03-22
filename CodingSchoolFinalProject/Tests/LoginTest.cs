@@ -8,11 +8,16 @@ namespace CodingSchoolFinalProject.Tests
 {
     public class LoginTest :PARENTEST
     {
-        
-        [Test]
-        public void UserLoginTest()
+        [SetUp]
+        public void InitSignIn()
         {
-            _loginPage.ClickSignInButton();
+            _homePage.ClickSignInButton();
+        }
+
+        [Test]
+        public void BackToHomePageIsAvailable()
+        {
+            _loginPage.ClickYourLogo().AssertHomeSliderIsVisible();
         }
 
         [TearDown]

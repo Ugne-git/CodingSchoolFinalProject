@@ -1,21 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace CodingSchoolFinalProject.Pages
 {
     public class LoginPage :PARENTPAGE
     {
-        private IWebElement SigninButtonElement =>
-            Driver.FindElement(By.CssSelector("#header > div.nav > div > div > nav > div.header_user_info > a")); //surasti ir pakeisti į geresnį selectorių
+        //variables
+        private IWebElement SubmitLoginButtonElement => Driver.FindElement(By.Id("SubmitLogin"));
+        private IWebElement YourLogoElement => Driver.FindElement(By.Id("header_logo"));
 
+        //constructor
         public LoginPage(IWebDriver driver) : base(driver) { }
 
-        public LoginPage ClickSignInButton()
+        //methods
+        public LoginPage AssertSubmitLoginButtonIsVisible()
         {
-            SigninButtonElement.Click();
+            Assert.IsNotNull(SubmitLoginButtonElement, "Kazkoks klaidos pranesimas");
             return this;
         }
+
+        public HomePage ClickYourLogo()
+        {
+            YourLogoElement.Click();
+            return new HomePage(Driver);
+        }
+
+
     }
 }
