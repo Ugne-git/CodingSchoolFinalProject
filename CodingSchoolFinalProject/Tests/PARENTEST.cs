@@ -1,27 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using CodingSchoolFinalProject.Pages;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.Extensions;
 
 namespace CodingSchoolFinalProject.Tests
 {
     public class PARENTEST
     {
         protected IWebDriver Driver;
+        protected LoginPage _loginPage;
 
         // driverio inicijavimas
         [SetUp]
         public void ParentPreconditions()
         {
-            Driver = new ChromeDriver();
-            Driver.Manage().Window.Maximize();
+            Driver = MainDriver.InitiateWebDriver(Browser.Chrome);
             Driver.Url = "http://automationpractice.com/index.php";
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+
+            InitiatePages();
         }
 
-        //quitiname draiverį
+        //methods
+        public void InitiatePages()
+        {
+            _loginPage = new LoginPage(Driver);
+        }
+
+        protected void CreateScreenshot()
+        {
+            Screenshot screenshot = Driver.TakeScreenshot();
+            var screenshotpath = $"{TestContext.CurrentContext.WorkDirectory}/Screenshots";
+            Directory.CreateDirectory(screenshotpath);
+            string screenshotFile = Path.Combine(screenshotpath, $"{TestContext.CurrentContext.Test.Name}.png");
+            screenshot.SaveAsFile(screenshotFile, ScreenshotImageFormat.Png);
+            Console.WriteLine("screenshotFile: file://" + screenshotFile);
+
+            TestContext.AddTestAttachment(screenshotFile, "My Screenshot");
+        }
+
+        protected void MakeScreenShotOnTestFail()
+        {
+            if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
+            {
+                CreateScreenshot();
+            }
+        }
+
+        //klasės teardown'as - quitiname draiverį
         [TearDown]
         public void ParentPostconditions()
         {

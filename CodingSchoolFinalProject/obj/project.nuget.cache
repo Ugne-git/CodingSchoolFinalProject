@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "m6xAj4bajdjlwk1tYEsNDTAr0rLXCvLqBue8/IRyWANKEkNXwSLMI1Mq4VkdZByrA/UCrnu61JdPs6SHzGV9ag==",
+  "dgSpecHash": "f7FsZLSsOch2VAo63svhdjQgjozmBz63s1iqwsjNvpjsepDXomhAnE/We7IaZYGFgDCp2462IFC8Uv82ZYR2Tw==",
   "success": true,
   "projectFilePath": "C:\\Users\\UUURRRR\\Documents\\GitHub\\CodingSchoolFinalProject\\CodingSchoolFinalProject\\CodingSchoolFinalProject.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "C:\\Users\\UUURRRR\\.nuget\\packages\\selenium.support\\3.141.0\\selenium.support.3.141.0.nupkg.sha512",
     "C:\\Users\\UUURRRR\\.nuget\\packages\\selenium.webdriver\\3.141.0\\selenium.webdriver.3.141.0.nupkg.sha512",
     "C:\\Users\\UUURRRR\\.nuget\\packages\\selenium.webdriver.chromedriver\\80.0.3987.10600\\selenium.webdriver.chromedriver.80.0.3987.10600.nupkg.sha512",
+    "C:\\Users\\UUURRRR\\.nuget\\packages\\selenium.webdriver.geckodriver\\0.26.0\\selenium.webdriver.geckodriver.0.26.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections.nongeneric\\4.3.0\\system.collections.nongeneric.4.3.0.nupkg.sha512",
