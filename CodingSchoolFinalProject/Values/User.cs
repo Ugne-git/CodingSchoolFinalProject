@@ -4,15 +4,15 @@ namespace CodingSchoolFinalProject
 {
     public class User
     {
-        public string UserName;
+        public string UserEmail;
         public string UserPassword;
 
-        public User(string username, string password)
+        public User(string useremail, string password)
         {
-            UserName = username;
+            UserEmail = useremail;
             UserPassword = password;
         }
 
-        public static User TestUser = new User("ugne.puskunigyte@gmail.com", "Test123");
+        public static User DummyUser = new User("ugne.puskunigyte@gmail.com", "Test123");
     }
 }

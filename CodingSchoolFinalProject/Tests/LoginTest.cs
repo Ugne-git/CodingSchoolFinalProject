@@ -20,6 +20,16 @@ namespace CodingSchoolFinalProject.Tests
             _loginPage.ClickYourLogo().AssertHomeSliderIsVisible();
         }
 
+        [Test]
+        public void TestUserLogin()
+        {
+            _loginPage
+                .EnterUserEmail(User.DummyUser.UserEmail)
+                .EnterUserPassword(User.DummyUser.UserPassword)
+                .ClickSignInButton()
+                .AssertMyAccountElementIsVisible();
+        }
+
         [TearDown]
         public void LogOut()
         {

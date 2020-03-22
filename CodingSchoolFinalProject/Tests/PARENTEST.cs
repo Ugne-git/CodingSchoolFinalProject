@@ -16,6 +16,7 @@ namespace CodingSchoolFinalProject.Tests
         protected IWebDriver Driver;
         protected LoginPage _loginPage;
         protected HomePage _homePage;
+        protected UserPage _userPage;
 
         // driverio inicijavimas
         [SetUp]
@@ -32,6 +33,7 @@ namespace CodingSchoolFinalProject.Tests
         {
             _loginPage = new LoginPage(Driver);
             _homePage = new HomePage(Driver);
+            _userPage = new UserPage(Driver);
         }
 
         protected void CreateScreenshot()
