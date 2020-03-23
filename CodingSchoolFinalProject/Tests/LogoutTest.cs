@@ -5,13 +5,19 @@ using NUnit.Framework;
 
 namespace CodingSchoolFinalProject.Tests
 {
-    public class HomeTests : PARENTEST
+    public class LogoutTest:PARENTEST
     {
-        [Test]
-        public void SignInIsAvailableTest()
+        [SetUp]
+        public void InitLogIn()
         {
-            _homePage
-                .ClickSignInButton()
+            _homePage.ClickHomeSignInButton().Login(User.DummyUser);
+        }
+
+        [Test]
+        public void UserLogoutTest()
+        {
+            _userPage
+                .ClickSignOutButton()
                 .AssertSubmitLoginButtonIsVisible();
         }
 

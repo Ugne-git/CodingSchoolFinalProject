@@ -11,22 +11,15 @@ namespace CodingSchoolFinalProject.Tests
         [SetUp]
         public void InitSignIn()
         {
-            _homePage.ClickSignInButton();
+            _homePage
+                .ClickHomeSignInButton();
         }
 
         [Test]
-        public void BackToHomePageIsAvailable()
-        {
-            _loginPage.ClickYourLogo().AssertHomeSliderIsVisible();
-        }
-
-        [Test]
-        public void TestUserLogin()
+        public void UserLoginTest()
         {
             _loginPage
-                .EnterUserEmail(User.DummyUser.UserEmail)
-                .EnterUserPassword(User.DummyUser.UserPassword)
-                .ClickSignInButton()
+                .Login(User.DummyUser)
                 .AssertMyAccountElementIsVisible();
         }
 
@@ -34,6 +27,9 @@ namespace CodingSchoolFinalProject.Tests
         public void LogOut()
         {
             MakeScreenShotOnTestFail();
+            _userPage
+                .ClickSignOutButton()
+                .ClickYourLogo();
         }
     }
 }

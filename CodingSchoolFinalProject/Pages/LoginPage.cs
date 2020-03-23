@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace CodingSchoolFinalProject.Pages
 {
@@ -13,7 +14,7 @@ namespace CodingSchoolFinalProject.Pages
         private IWebElement YourLogoElement => Driver.FindElement(By.Id("header_logo"));
         private IWebElement EmailAddressElement => Driver.FindElement(By.Id("email"));
         private IWebElement PasswordElement => Driver.FindElement(By.Id("passwd"));
-        private IWebElement SignInButton => Driver.FindElement(By.Id("SubmitLogin"));
+        private IWebElement SignInButtonElement => Driver.FindElement(By.Id("SubmitLogin"));
 
         //constructor
         public LoginPage(IWebDriver driver) : base(driver) { }
@@ -21,6 +22,8 @@ namespace CodingSchoolFinalProject.Pages
         //methods
         public LoginPage AssertSubmitLoginButtonIsVisible()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(15)).Until(d => SubmitLoginButtonElement.Displayed);
             Assert.IsNotNull(SubmitLoginButtonElement, "Kazkoks klaidos pranesimas");
             return this;
         }
@@ -45,10 +48,17 @@ namespace CodingSchoolFinalProject.Pages
 
         public UserPage ClickSignInButton()
         {
-            SignInButton.Click();
+            SignInButtonElement.Click();
             return new UserPage(Driver);
         }
 
+        public UserPage Login(User user)
+        {
+            EnterUserEmail(user.UserEmail);
+            EnterUserPassword(user.UserPassword);
+            ClickSignInButton();
+            return new UserPage(Driver);
+        }
 
     }
 }
