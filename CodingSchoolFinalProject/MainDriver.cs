@@ -20,7 +20,7 @@ namespace CodingSchoolFinalProject
                 case Browser.Chrome:
                     driver = new ChromeDriver();
                     driver.Manage().Window.Maximize();
-                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
                     break;
                 case Browser.Firefox:
                     driver = new FirefoxDriver();

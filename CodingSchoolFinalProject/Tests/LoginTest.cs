@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using CodingSchoolFinalProject.Pages;
+using CodingSchoolFinalProject.Values;
 using NUnit.Framework;
 
 namespace CodingSchoolFinalProject.Tests
@@ -22,6 +23,7 @@ namespace CodingSchoolFinalProject.Tests
                 .Login(User.DummyUser)
                 .AssertMyAccountElementIsVisible();
         }
+
 
         [TearDown]
         public void LogOut()

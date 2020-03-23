@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using CodingSchoolFinalProject.Values;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -13,6 +14,14 @@ namespace CodingSchoolFinalProject.Pages
         //variables
         private IWebElement MyAccountElement => Driver.FindElement(By.Id("my-account"));
         private IWebElement SignOutElement => Driver.FindElement(By.CssSelector(".logout"));
+
+
+       public string element = "Women";
+        private IWebElement WomenCatElement => Driver.FindElement(By.CssSelector($"a[title~='{element}']")); //kokia geresnė paieška?
+
+        private IWebElement CatElement => Driver.FindElement(By.CssSelector(".title_block"));
+           
+
 
         //constructor
         public UserPage(IWebDriver driver) : base(driver) { }
@@ -30,6 +39,19 @@ namespace CodingSchoolFinalProject.Pages
         {
             SignOutElement.Click();
             return new LoginPage(Driver);
+        }
+
+        public UserPage ClickCat(string element)
+        {
+            WomenCatElement.Click();
+            WomenCatElement.SendKeys(element);
+            return this;
+        }
+
+        public UserPage IsVisible()
+        {
+            Assert.AreEqual("WOMEN",CatElement.Text);
+            return this;
         }
     }
 }

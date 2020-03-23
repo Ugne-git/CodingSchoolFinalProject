@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CodingSchoolFinalProject.Values;
 using NUnit.Framework;
 
 namespace CodingSchoolFinalProject.Tests
 {
-    public class LogoutTest:PARENTEST
+    public class AddItemTest:PARENTEST
     {
         [SetUp]
         public void InitLogIn()
@@ -15,18 +14,18 @@ namespace CodingSchoolFinalProject.Tests
         }
 
         [Test]
-        public void UserLogoutTest()
+        public void ChooseItemAndAddItToCartTest()
         {
-            _userPage
-                .ClickSignOutButton()
-                .AssertSubmitLoginButtonIsVisible();
+
+            _userPage.ClickCat("Women").IsVisible();
         }
 
         [TearDown]
-        public void BackToHome()
+        public void LogOutAndBackToHome()
         {
             MakeScreenShotOnTestFail();
-            _loginPage.ClickYourLogo();
         }
+
+
     }
 }
