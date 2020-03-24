@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CodingSchoolFinalProject.Pages;
+using CodingSchoolFinalProject.Values;
 using NUnit.Framework;
 
 namespace CodingSchoolFinalProject.Tests
@@ -16,8 +18,13 @@ namespace CodingSchoolFinalProject.Tests
         [Test]
         public void ChooseItemAndAddItToCartTest()
         {
+            _userPage
+                //.selectCategory(Category.Dresses)
+                //.AsssertSelectedCatIsVisible(Categories.DRESSES)
+                .selectCategory(Category.Dresses)
+                .AsssertSelectedCatIsVisible(Categories.DRESSES)
+                .ClickAddTocartButton();
 
-            _userPage.ClickCat("Women").IsVisible();
         }
 
         [TearDown]

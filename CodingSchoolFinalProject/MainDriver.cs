@@ -24,6 +24,8 @@ namespace CodingSchoolFinalProject
                     break;
                 case Browser.Firefox:
                     driver = new FirefoxDriver();
+                    driver.Manage().Window.Maximize();
+                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
                     break;
                 default:
                     Assert.Fail("Browser not supported");
