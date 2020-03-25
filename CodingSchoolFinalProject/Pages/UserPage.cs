@@ -74,7 +74,7 @@ namespace CodingSchoolFinalProject.Pages
 
         public UserPage AsssertSelectedCatIsVisible(Categories expectedCat)
         {
-            Assert.AreEqual(expectedCat.title, CatElement.Text, "Kazkoks klaidos pranesimas");
+            Assert.AreEqual(expectedCat.title, CatElement.Text, "Category was not selected");
             return this;
         }
 
@@ -91,7 +91,7 @@ namespace CodingSchoolFinalProject.Pages
 
         public UserPage AssertProductContainerIsVisible()
         {
-            Assert.IsNotNull(QuickViewElement, "Kazkoks klaidos pranesimas");
+            Assert.IsNotNull(QuickViewElement, "Products are not presented");
             return this;
         }
 
@@ -107,7 +107,7 @@ namespace CodingSchoolFinalProject.Pages
             Driver.SwitchTo().Frame(0);
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => BuyBlockElement.Displayed);
-            Assert.IsNotNull(BuyBlockElement, "Kazkoks klaidos pranesimas");
+            Assert.IsNotNull(BuyBlockElement, "Buy block was not presented");
             Driver.SwitchTo().DefaultContent();
             return this;
         }
@@ -126,7 +126,7 @@ namespace CodingSchoolFinalProject.Pages
         {
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => CartBlockElement.Displayed);
-            Assert.AreEqual(exptext, CartBlockElement.Text, "Kazkoks klaidos pranesimas");
+            Assert.AreEqual(exptext, CartBlockElement.Text, "no confirmation that item was added");
             return this;
         }
 

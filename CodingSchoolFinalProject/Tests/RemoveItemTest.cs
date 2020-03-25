@@ -23,17 +23,16 @@ namespace CodingSchoolFinalProject.Tests
         [Test]
         public void RemoveItemFromCartTest()
         {
-            _cartPage.AsserShopingCartSummaryIsVisible();
-            _cartPage.RemoveItemFromCart();
-            _cartPage.AssertCartIsEmpty("Your shopping cart is empty.");
+            _cartPage.AsserShopingCartSummaryIsVisible().RemoveItemFromCart().AssertCartIsEmpty("Your shopping cart is empty.");
+      
         }
 
         [TearDown]
-        public void BackToHome()
+        public void SignOut()
         {
             MakeScreenShotOnTestFail();
             _userPage.ClickSignOutButton();
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
         }
     }
 }

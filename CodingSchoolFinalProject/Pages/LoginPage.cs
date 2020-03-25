@@ -24,7 +24,7 @@ namespace CodingSchoolFinalProject.Pages
         {
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(15)).Until(d => SubmitLoginButtonElement.Displayed);
-            Assert.IsNotNull(SubmitLoginButtonElement, "Kazkoks klaidos pranesimas");
+            Assert.IsNotNull(SubmitLoginButtonElement, "Login Button is not presented");
             return this;
         }
 

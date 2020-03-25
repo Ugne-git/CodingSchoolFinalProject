@@ -26,21 +26,21 @@ namespace CodingSchoolFinalProject.Pages
         {
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => CartTitleElement.Displayed);
-            Assert.IsNotNull(CartTitleElement, "Kazkoks klaidos pranesimas");
+            Assert.IsNotNull(CartTitleElement, "shopping cart title was not presented");
             return this;
         }
 
-        public UserPage RemoveItemFromCart()
+        public CartPage RemoveItemFromCart()
         {
             DeleteItemElement.Click();
-            return new UserPage(Driver);
+            return this;
         }
 
         public CartPage AssertCartIsEmpty(string expText)
         {
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => CartIsEmptyAllertElement.Displayed);
-            Assert.AreEqual(expText, CartIsEmptyAllertElement.Text, "Kazkoks klaidos pranesimas");
+            Assert.AreEqual(expText, CartIsEmptyAllertElement.Text, "no confirmation that item was added");
             return this;
         }
     }

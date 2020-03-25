@@ -42,7 +42,7 @@ namespace CodingSchoolFinalProject.Pages
         {
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(15)).Until(d => HomeSliderElement.Displayed);
-            Assert.IsNotNull(HomeSliderElement, "Kazkoks klaidos pranesimas");
+            Assert.IsNotNull(HomeSliderElement, "Home Slider is not presented");
             return this;
         }
     }
