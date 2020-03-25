@@ -17,6 +17,7 @@ namespace CodingSchoolFinalProject.Tests
         protected LoginPage _loginPage;
         protected HomePage _homePage;
         protected UserPage _userPage;
+        protected CartPage _cartPage;
 
         // driverio inicijavimas
         [SetUp]
@@ -34,6 +35,7 @@ namespace CodingSchoolFinalProject.Tests
             _loginPage = new LoginPage(Driver);
             _homePage = new HomePage(Driver);
             _userPage = new UserPage(Driver);
+            _cartPage = new CartPage(Driver);
         }
 
         protected void CreateScreenshot()

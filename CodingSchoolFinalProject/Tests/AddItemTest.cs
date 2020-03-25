@@ -36,7 +36,8 @@ namespace CodingSchoolFinalProject.Tests
         public void LogOutAndBackToHome()
         {
             MakeScreenShotOnTestFail();
-            _userPage.ClickContinueShopping();
+            _userPage.ClickContinueShopping().GoToUserCart().RemoveItemFromCart().ClickSignOutButton();
+            Thread.Sleep(5000);
         }
 
 

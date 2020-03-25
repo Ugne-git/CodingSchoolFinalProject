@@ -30,12 +30,12 @@ namespace CodingSchoolFinalProject.Pages
         private IWebElement QuickViewElement => Driver.FindElement(By.CssSelector(".left-block"));
         private IWebElement AddToCartButtonElement => Driver.FindElement(By.CssSelector("#add_to_cart button"));
         private IWebElement BuyBlockElement => Driver.FindElement(By.CssSelector("#buy_block"));
-
         private IWebElement CartBlockElement =>
             Driver.FindElement(By.CssSelector("#layer_cart div.clearfix div.layer_cart_product > h2"));
 
         //after adding item to cart variables
         private IWebElement ContinueShoppingElement => Driver.FindElement(By.CssSelector("#layer_cart div.clearfix div.layer_cart_cart div.button-container > span"));
+        private IWebElement CartButtonElement => Driver.FindElement(By.CssSelector(".shopping_cart > a"));
 
         //class driver constructor
         public UserPage(IWebDriver driver) : base(driver) { }
@@ -108,11 +108,15 @@ namespace CodingSchoolFinalProject.Pages
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => BuyBlockElement.Displayed);
             Assert.IsNotNull(BuyBlockElement, "Kazkoks klaidos pranesimas");
+            Driver.SwitchTo().DefaultContent();
             return this;
         }
 
         public UserPage ClickAddToCart()
         {
+            Driver.SwitchTo().Frame(0);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => AddToCartButtonElement.Displayed);
             AddToCartButtonElement.Click();
             Driver.SwitchTo().DefaultContent();
             return this;
@@ -128,19 +132,29 @@ namespace CodingSchoolFinalProject.Pages
 
         public UserPage ClickContinueShopping()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => ContinueShoppingElement.Displayed);
             ContinueShoppingElement.Click();
             return this;
         }
 
-        public UserPage AddItemToCartAndContinue(Category category)
+        public UserPage AddItemToCartAndContinue()
         {
-            selectCategory(category);
+            selectCategory(Category.Dresses);
             MoveToQuickView();
             ClickQuickView();
             ClickAddToCart();
             ClickContinueShopping();
-
             return this;
+        }
+
+        public CartPage GoToUserCart()
+        {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => CartButtonElement.Displayed);
+            Actions actions = new Actions(Driver);
+            actions.MoveToElement(CartButtonElement).Click().Perform();
+            return new CartPage(Driver);
         }
 
     }
