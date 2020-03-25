@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using CodingSchoolFinalProject.Pages;
 using CodingSchoolFinalProject.Values;
 using NUnit.Framework;
@@ -19,18 +20,23 @@ namespace CodingSchoolFinalProject.Tests
         public void ChooseItemAndAddItToCartTest()
         {
             _userPage
-                //.selectCategory(Category.Dresses)
-                //.AsssertSelectedCatIsVisible(Categories.DRESSES)
+                .selectCategory(Category.Women)
+                .AsssertSelectedCatIsVisible(Categories.WOMEN)
                 .selectCategory(Category.Dresses)
                 .AsssertSelectedCatIsVisible(Categories.DRESSES)
-                .ClickAddTocartButton();
-
+                .MoveToQuickView()
+                .AssertProductContainerIsVisible()
+                .ClickQuickView()
+                .AssertBuyBlockIsVisible()
+                .ClickAddToCart()
+                .AssertItemIsAddedToCart("Product successfully added to your shopping cart");
         }
 
         [TearDown]
         public void LogOutAndBackToHome()
         {
             MakeScreenShotOnTestFail();
+            _userPage.ClickContinueShopping();
         }
 
 

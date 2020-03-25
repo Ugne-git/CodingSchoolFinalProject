@@ -18,24 +18,27 @@ namespace CodingSchoolFinalProject.Pages
         //page navigation variables
         private IWebElement MyAccountElement => Driver.FindElement(By.Id("my-account"));
         private IWebElement SignOutElement => Driver.FindElement(By.CssSelector(".logout"));
+
         //select category variables
         private IWebElement WomenCatElement => Driver.FindElement(By.CssSelector($"#block_top_menu ul.sf-menu > li > a[Title='Women']"));
         private IWebElement DressesCatElement => Driver.FindElement(By.CssSelector($"#block_top_menu ul.sf-menu > li > a[Title='Dresses']"));
         private IWebElement TshirtsElement => Driver.FindElement(By.CssSelector($"#block_top_menu ul.sf-menu > li > a[Title='T-shirts']"));
         private IWebElement CatElement => Driver.FindElement(By.CssSelector(".title_block"));
+
         //add item to cart variables
-        private IWebElement AddToCartButtonElement => Driver.FindElement(By.CssSelector(".left-block"));
+        private IWebElement ProductContainerElement => Driver.FindElement(By.CssSelector(".right-block"));
+        private IWebElement QuickViewElement => Driver.FindElement(By.CssSelector(".left-block"));
+        private IWebElement AddToCartButtonElement => Driver.FindElement(By.CssSelector("#add_to_cart button"));
+        private IWebElement BuyBlockElement => Driver.FindElement(By.CssSelector("#buy_block"));
 
-        private IWebElement element => Driver.FindElement(By.Id("informations_block_left_1"));
+        private IWebElement CartBlockElement =>
+            Driver.FindElement(By.CssSelector("#layer_cart div.clearfix div.layer_cart_product > h2"));
 
-        private IWebElement element2 => Driver.FindElement(By.CssSelector(".right-block"));
-
-        private IWebElement button => Driver.FindElement(By.Id("add_to_cart"));
+        //after adding item to cart variables
+        private IWebElement ContinueShoppingElement => Driver.FindElement(By.CssSelector("#layer_cart div.clearfix div.layer_cart_cart div.button-container > span"));
 
         //class driver constructor
-        public UserPage(IWebDriver driver) : base(driver)
-        {
-        }
+        public UserPage(IWebDriver driver) : base(driver) { }
 
         //methods
         public UserPage AssertMyAccountElementIsVisible()
@@ -71,26 +74,71 @@ namespace CodingSchoolFinalProject.Pages
 
         public UserPage AsssertSelectedCatIsVisible(Categories expectedCat)
         {
-            Assert.AreEqual(expectedCat.title, CatElement.Text);
+            Assert.AreEqual(expectedCat.title, CatElement.Text, "Kazkoks klaidos pranesimas");
             return this;
         }
 
-        public UserPage ClickAddTocartButton()
+        public UserPage MoveToQuickView()
         {
 
-            //Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
-            //new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => element.Displayed);
-            Thread.Sleep(5000);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => ProductContainerElement.Displayed);
             Actions actions = new Actions(Driver);
-            actions.MoveToElement(element2).Perform();
-            Thread.Sleep(5000);
-            actions.MoveToElement(element2).Click().Perform();
-            Thread.Sleep(5000);
-            
-            AddToCartButtonElement.Click();
-            Thread.Sleep(5000);
+            actions.MoveToElement(ProductContainerElement).Perform();
 
-            Assert.IsNotNull(button);
+            return this;
+        }
+
+        public UserPage AssertProductContainerIsVisible()
+        {
+            Assert.IsNotNull(QuickViewElement, "Kazkoks klaidos pranesimas");
+            return this;
+        }
+
+        public UserPage ClickQuickView()
+        {
+            QuickViewElement.Click();
+            return this;
+        }
+
+        public UserPage AssertBuyBlockIsVisible()
+        {
+
+            Driver.SwitchTo().Frame(0);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => BuyBlockElement.Displayed);
+            Assert.IsNotNull(BuyBlockElement, "Kazkoks klaidos pranesimas");
+            return this;
+        }
+
+        public UserPage ClickAddToCart()
+        {
+            AddToCartButtonElement.Click();
+            Driver.SwitchTo().DefaultContent();
+            return this;
+        }
+
+        public UserPage AssertItemIsAddedToCart(string exptext)
+        {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => CartBlockElement.Displayed);
+            Assert.AreEqual(exptext, CartBlockElement.Text, "Kazkoks klaidos pranesimas");
+            return this;
+        }
+
+        public UserPage ClickContinueShopping()
+        {
+            ContinueShoppingElement.Click();
+            return this;
+        }
+
+        public UserPage AddItemToCartAndContinue(Category category)
+        {
+            selectCategory(category);
+            MoveToQuickView();
+            ClickQuickView();
+            ClickAddToCart();
+            ClickContinueShopping();
 
             return this;
         }
