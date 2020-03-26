@@ -26,6 +26,7 @@ namespace CodingSchoolFinalProject.Pages
         {
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => CartTitleElement.Displayed);
+            //atgal reikia uzdeti implicit wait :) 
             Assert.IsNotNull(CartTitleElement, "shopping cart title was not presented");
             return this;
         }

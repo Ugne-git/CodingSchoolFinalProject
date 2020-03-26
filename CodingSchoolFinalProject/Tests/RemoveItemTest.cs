@@ -27,6 +27,7 @@ namespace CodingSchoolFinalProject.Tests
       
         }
 
+        //gali tureti baseTests kaip metoda ir ji cia tiesiog teardown iskviesti nes maciau kad kartojas :)
         [TearDown]
         public void SignOut()
         {
