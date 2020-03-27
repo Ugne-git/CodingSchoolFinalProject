@@ -38,7 +38,7 @@ namespace CodingSchoolFinalProject.Tests
             MakeScreenShotOnTestFail();
             _userPage.ClickContinueShopping().GoToUserCart().RemoveItemFromCart();
             _userPage.ClickSignOutButton();
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
         }
 
 

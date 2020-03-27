@@ -17,13 +17,19 @@ namespace CodingSchoolFinalProject.Tests
         [SetUp]
         public void InitAddItemToCart()
         {
-            _homePage.ClickHomeSignInButton().Login(User.DummyUser).AddItemToCartAndContinue().GoToUserCart();
+            _homePage
+                .ClickHomeSignInButton()
+                .Login(User.DummyUser)
+                .AddItemToCartAndContinue().GoToUserCart();
         }
 
         [Test]
         public void RemoveItemFromCartTest()
         {
-            _cartPage.AsserShopingCartSummaryIsVisible().RemoveItemFromCart().AssertCartIsEmpty("Your shopping cart is empty.");
+            _cartPage
+                .AsserShopingCartSummaryIsVisible()
+                .RemoveItemFromCart()
+                .AssertCartIsEmpty("Your shopping cart is empty.");
       
         }
 
@@ -32,7 +38,7 @@ namespace CodingSchoolFinalProject.Tests
         {
             MakeScreenShotOnTestFail();
             _userPage.ClickSignOutButton();
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
         }
     }
 }

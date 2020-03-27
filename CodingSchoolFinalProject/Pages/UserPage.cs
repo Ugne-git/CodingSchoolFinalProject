@@ -46,6 +46,7 @@ namespace CodingSchoolFinalProject.Pages
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(15)).Until(d => MyAccountElement.Displayed);
             Assert.IsNotNull(MyAccountElement, "Kazkoks klaidos pranesimas");
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             return this;
         }
 
@@ -85,7 +86,7 @@ namespace CodingSchoolFinalProject.Pages
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => ProductContainerElement.Displayed);
             Actions actions = new Actions(Driver);
             actions.MoveToElement(ProductContainerElement).Perform();
-
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             return this;
         }
 
@@ -109,6 +110,7 @@ namespace CodingSchoolFinalProject.Pages
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => BuyBlockElement.Displayed);
             Assert.IsNotNull(BuyBlockElement, "Buy block was not presented");
             Driver.SwitchTo().DefaultContent();
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             return this;
         }
 
@@ -127,6 +129,7 @@ namespace CodingSchoolFinalProject.Pages
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => CartBlockElement.Displayed);
             Assert.AreEqual(exptext, CartBlockElement.Text, "no confirmation that item was added");
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             return this;
         }
 
@@ -135,6 +138,7 @@ namespace CodingSchoolFinalProject.Pages
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => ContinueShoppingElement.Displayed);
             ContinueShoppingElement.Click();
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             return this;
         }
 
@@ -154,6 +158,7 @@ namespace CodingSchoolFinalProject.Pages
             new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(d => CartButtonElement.Displayed);
             Actions actions = new Actions(Driver);
             actions.MoveToElement(CartButtonElement).Click().Perform();
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             return new CartPage(Driver);
         }
 
